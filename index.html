@@ -1,9 +1,133 @@
-<html>
- <head>
- </head>
- <body>
-  <script src="https://www.puck-js.com/puck.js"></script>
-  <button onclick="Puck.write('LED1.set();\n');">On!</button>
-  <button onclick="Puck.write('LED1.reset();\n');">Off!</button>
- </body>
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script src="https://cdn.jsdelivr.net/particle-api-js/5/particle.min.js"></script>
+    <script>
+        var particle = new Particle();
+        var token = "91df28a04e730a0a3c1a3898e357f94c117aca5f"; // from result of particle.login
+
+        function keydownHandler(event) {
+            if (event.repeat) {
+                return
+            }
+
+            var turnSpeed = document.getElementById('turnvalue').value;
+            var forwSpeed = document.getElementById('speedvalue').value;
+            //var deg = document.getElementById('rotationvalue').value;
+            //getSpeed();
+
+            if (event.code == "Space") {
+                carMove('st')
+            }
+            if (event.key == "i") {
+                carMove('fw' + forwSpeed)
+            }
+            if (event.key == "k") {
+                carMove('rv' + forwSpeed)
+            }
+            if (event.key == "j") {
+                carMove('lt' + turnSpeed)
+            }
+            if (event.key == "l") {
+                carMove('rt' + turnSpeed)
+            }
+            if (event.key == "b") {
+                turnDeg(180);
+            }
+            //console.log(event)
+        }
+
+        function keyUpHandler(event) {
+            if (event.key == "b") {
+                return
+            }
+            carMove('st');
+            return
+        }
+
+        document.addEventListener("keydown", keydownHandler);
+        document.addEventListener("keyup", keyUpHandler);
+        //document.getElementById('rotatebutton').addEventListener('onclick', turnDeg(rotateDeg));
+
+        function turnDeg() {
+            var deg = document.getElementById('rotationvalue').value;
+
+            particle.callFunction({
+                deviceId: '300045000347353137323334',
+                name: 'moveCar',
+                argument: "rt" + 150,
+                auth: token
+                d
+            });
+
+            var rotTime = 2900
+
+            var rot = rotTime / 360 * deg
+            //timeout function stops car
+            //full rotation 360 takes roughly 2800ms at 150 speed
+            setTimeout(function() {
+                console.log("timeout fire");
+                particle.callFunction({
+                    deviceId: '300045000347353137323334',
+                    name: 'moveCar',
+                    argument: "st",
+                    auth: token
+                });
+            }, rot);
+        }
+
+        function getSpeed() {
+            particle.getVariable({
+                deviceId: '300045000347353137323334',
+                name: 'potVal',
+                auth: token
+            }).then(function(data) {
+                console.log('Device variable retrieved successfully:', data);
+                document.getElementById('speedvalue').innerHTML = data.body.result
+            }, function(err) {
+                console.log('An error occurred while getting attrs:', err);
+            });
+        }
+
+        function carMove(d) {
+            console.log(d);
+            particle.callFunction({
+                deviceId: '300045000347353137323334',
+                name: 'moveCar',
+                argument: d,
+                auth: token
+            });
+        }
+
+    </script>
+</head>
+
+<body>
+    <div>
+        <h2>Direction - <span id='direction'></span></h2>
+    </div>
+    <div>
+        <h2>Forward Speed 0-255<span>
+                <input id="speedvalue" type="text" value=200>
+            </span></h2>
+    </div>
+    <div>
+        <h2>Turn Speed 0-255<span>
+                <input id="turnvalue" type="text" value=150>
+            </span></h2>
+    </div>
+    <div>
+        <h2>Rotate Degs<span>
+                <input id="rotationvalue" type="text" value=90><button id="rotatebutton" onclick="turnDeg()">Rotate</button>
+            </span></h2>
+    </div>
+
+
+</body>
+
 </html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
