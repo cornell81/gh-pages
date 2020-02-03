@@ -80,14 +80,14 @@
             }, rot);
         }
 
-        function getSpeed() {
+        function getDirection() {
             particle.getVariable({
                 deviceId: '300045000347353137323334',
-                name: 'potVal',
+                name: 'robotDirection',
                 auth: token
             }).then(function(data) {
                 console.log('Device variable retrieved successfully:', data);
-                document.getElementById('speedvalue').innerHTML = data.body.result
+                document.getElementById('directionvalue').innerHTML = data.body.result
             }, function(err) {
                 console.log('An error occurred while getting attrs:', err);
             });
@@ -108,7 +108,7 @@
 
 <body>
     <div>
-        <h2>Direction - <span id='direction'></span></h2>
+        <h2>Direction - <span id='directionvalue'></span></h2>
     </div>
     <div>
         <h2>Forward Speed 0-255<span>
