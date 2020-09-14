@@ -8,6 +8,7 @@
     <script src="https://cdn.jsdelivr.net/particle-api-js/5/particle.min.js"></script>
     <script>
         var particle = new Particle();
+        var deviceId = "3b001c000d51353432383931"
         var token = "86cb205e748c54ccc82d438a780c444de2cceb79"
         //var token = "91df28a04e730a0a3c1a3898e357f94c117aca5f"; // from result of particle.login
 
@@ -58,7 +59,7 @@
             var deg = document.getElementById('rotationvalue').value;
 
             particle.callFunction({
-                deviceId: '300045000347353137323334',
+                deviceId: deviceId,
                 name: 'moveCar',
                 argument: "rt" + 150,
                 auth: token
@@ -72,7 +73,7 @@
             setTimeout(function() {
                 console.log("timeout fire");
                 particle.callFunction({
-                    deviceId: '300045000347353137323334',
+                    deviceId: deviceId,
                     name: 'moveCar',
                     argument: "st",
                     auth: token
@@ -82,7 +83,7 @@
 
         function getDirection() {
             particle.getVariable({
-                deviceId: '3b001c000d51353432383931',
+                deviceId: deviceId,
                 name: 'robotDirection',
                 auth: token
             }).then(function(data) {
@@ -96,7 +97,7 @@
         function carMove(d) {
             console.log(d);
             particle.callFunction({
-                deviceId: '300045000347353137323334',
+                deviceId: deviceId,
                 name: 'moveCar',
                 argument: d,
                 auth: token
