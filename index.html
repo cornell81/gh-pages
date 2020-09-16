@@ -12,16 +12,17 @@
 		var token = "9651415a47c485851f694f594d88403086eedc1f"
 		//var token = "91df28a04e730a0a3c1a3898e357f94c117aca5f"; // from result of particle.login
 
+		function mousePressHandler(event) {
+			console.log(event);
+		}
+
 		function keydownHandler(event) {
 			if (event.repeat) {
 				return
 			}
 
-			var turnSpeed = document.getElementById('turnAmount').value;
-			var forwSpeed = document.getElementById('speedAmount').value;
-			console.log(forwSpeed);
-			//var deg = document.getElementById('rotationvalue').value;
-			//getDirection();
+			var turnSpeed = document.getElementById('turnAmount').value * 255 / 10;
+			var forwSpeed = document.getElementById('speedAmount').value * 255 / 10;
 
 			if (event.code == "Space") {
 				carMove('st')
@@ -54,6 +55,7 @@
 
 		document.addEventListener("keydown", keydownHandler);
 		document.addEventListener("keyup", keyUpHandler);
+		document.addEventListener("mouseIsPressed", mousePressHandler);
 		//document.getElementById('rotatebutton').addEventListener('onclick', turnDeg(rotateDeg));
 
 		function turnDeg() {
