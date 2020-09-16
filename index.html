@@ -115,8 +115,11 @@
         <h2></h2>
     </div>
     <div>
-        <h2>Forward Speed 0-255<span>
-                <input id="speedvalue" type="text" value=255>
+        <h2>Forward Speed <output id="amount" name="amount" for="rangeInput">7</output><span>
+                <input type="range" id="rangeInput" name="rangeInput" min="0" max="10" value="7"
+       oninput="amount.value=rangeInput.value">                                                       
+
+
             </span></h2>
     </div>
     <div>
