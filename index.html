@@ -17,8 +17,8 @@
 				return
 			}
 
-			var turnSpeed = document.getElementById('turnvalue').value;
-			var forwSpeed = document.getElementById('speedvalue').value;
+			var turnSpeed = document.getElementById('turnAmount').value;
+			var forwSpeed = document.getElementById('speedAmount').value;
 			console.log(forwSpeed);
 			//var deg = document.getElementById('rotationvalue').value;
 			//getDirection();
@@ -115,8 +115,8 @@
 		<h2></h2>
 	</div>
 	<div>
-		<h2>Forward Speed - <output id="amount" name="amount" for="rangeInput">7</output> - <span>
-				<input type="range" id="rangeInput" name="rangeInput" min="0" max="10" value="7" oninput="amount.value=rangeInput.value">
+		<h2>Forward Speed - <output id="turnAmount" name="amount" for="rangeInput">7</output> - <span>
+				<input type="range" id="rangeInput" name="rangeInput" min="0" max="10" value="9" oninput="turnAmount.value=rangeInput.value">
 
 
 			</span></h2>
