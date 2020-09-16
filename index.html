@@ -21,8 +21,13 @@
 				return
 			}
 
-			var turnSpeed = document.getElementById('turnAmount').value * 255 / 10;
-			var forwSpeed = document.getElementById('speedAmount').value * 255 / 10;
+			var turnSpeed = document.getElementById('turnAmount').value
+			var forwSpeed = document.getElementById('speedAmount').value
+
+			turnSpeed = Math.round(turnSpeed / 10 * turnSpeed);
+			forwSpeed = Math.round(forwSpeed / 10 * turnSpeed);
+
+			console.log(forwSpeed);
 
 			if (event.code == "Space") {
 				carMove('st')
