@@ -21,8 +21,10 @@
 				return
 			}
 
-			var turnSpeed = document.getElementById('turnAmount').value
-			var forwSpeed = document.getElementById('speedAmount').value
+			var turnSpeed = document.getElementById('turnspeedslider').value
+			var forwSpeed = document.getElementById('forwspeedslider').value
+
+			console.log(forwSpeed);
 
 			turnSpeed = Math.round(turnSpeed / 10 * turnSpeed);
 			forwSpeed = Math.round(forwSpeed / 10 * turnSpeed);
@@ -123,14 +125,14 @@
 	</div>
 	<div>
 		<h2>Forward Speed - <output id="turnAmount" name="amount" for="rangeInput">7</output> - <span>
-				<input type="range" id="rangeInput" name="rangeInput" min="0" max="10" value="9" oninput="turnAmount.value=rangeInput.value">
+				<input type="range" id="forwspeedslider" name="rangeInput" min="0" max="10" value="9" oninput="turnAmount.value=rangeInput.value">
 
 
 			</span></h2>
 	</div>
 	<div>
 		<h2>Turn Speed - <output id="turnAmount" name="amount" for="turnInput">7</output> - <span>
-				<input type="range" id="rangeInput" name="rangeInput" min="0" max="10" value="7" oninput="turnAmount.value=turnInput.value">
+				<input type="range" id="turnspeedslider" name="rangeInput" min="0" max="10" value="7" oninput="turnAmount.value=turnInput.value">
 
 
 			</span></h2>
