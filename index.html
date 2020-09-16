@@ -21,8 +21,8 @@
 				return
 			}
 
-			var turnSpeed = document.getElementById('turnspeedslider').value
-			var forwSpeed = document.getElementById('forwspeedslider').value
+			var turnSpeed = new Number(document.getElementById('turnAmoun').value)
+			var forwSpeed = new Number(document.getElementById('forwSpeedAmount').value);
 
 			console.log(forwSpeed);
 
@@ -124,7 +124,7 @@
 		<h2></h2>
 	</div>
 	<div>
-		<h2>Forward Speed - <output id="turnAmount" name="amount" for="rangeInput">7</output> - <span>
+		<h2>Forward Speed - <output id="forwSpeedAmount" name="amount" for="rangeInput">7</output> - <span>
 				<input type="range" id="forwspeedslider" name="rangeInput" min="0" max="10" value="9" oninput="turnAmount.value=rangeInput.value">
 
 
