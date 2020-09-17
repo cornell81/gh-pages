@@ -25,9 +25,10 @@
 			var forwSpeed = new Number(document.getElementById('forwspeedslider').value);
 
 			console.log(forwSpeed);
+			console.log(turnSpeed);
 
-			turnSpeed = Math.round(255 / 10 * turnSpeed);
-			forwSpeed = Math.round(255 / 10 * turnSpeed);
+			turnSpeed = Math.round(255 / 10 * turnSpeed).toString();
+			forwSpeed = Math.round(255 / 10 * turnSpeed).toString();
 
 			console.log(forwSpeed);
 
