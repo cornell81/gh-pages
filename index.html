@@ -27,8 +27,8 @@
 			console.log(forwSpeed);
 			console.log(turnSpeed);
 
-			turnSpeed = Math.round(255 / 10 * turnSpeed).toString();
-			forwSpeed = Math.round(255 / 10 * turnSpeed).toString();
+			turnSpeed = Math.round(255 * (turnSpeed / 10)).toString();
+			forwSpeed = Math.round(255 * (forwSpeed / 10)).toString();
 
 			console.log(forwSpeed);
 
@@ -125,7 +125,7 @@
 		<h2></h2>
 	</div>
 	<div>
-		<h2>Forward Speed - <output id="forwSpeedAmount" name="amount" for="rangeInput">7</output> - <span>
+		<h2>Forward Speed - <output id="forwSpeedAmount" name="amount" for="rangeInput">9</output> - <span>
 				<input type="range" id="forwspeedslider" name="rangeInput" min="0" max="10" value="9" oninput="forwSpeedAmount.value=forwspeedslider.value">
 
 
