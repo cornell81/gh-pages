@@ -61,6 +61,14 @@
 		document.addEventListener("keydown", keydownHandler);
 		document.addEventListener("keyup", keyUpHandler);
 		document.addEventListener('onmousedown', mousePressHandler);
+
+		document.addEventListener('touchstart', function(ev) {
+			// Iterate through the touch points that were activated
+			// for this element and process each event 'target'
+			for (var i = 0; i < ev.targetTouches.length; i++) {
+				document.getElementById('touchdata').innerHTML = ev.targetTouches[i].target;
+			}
+		}, false);
 		//document.getElementById('rotatebutton').addEventListener('onclick', turnDeg(rotateDeg));
 
 		function turnDeg() {
@@ -138,6 +146,11 @@
 	<div>
 		<h2>Rotate Degs<span>
 				<input id="rotationvalue" type="text" value=90><button id="rotatebutton" onclick="turnDeg()">Rotate</button>
+			</span></h2>
+	</div>
+	<div>
+		<h2>Touch Event - <div id='touchdata'></div><span>
+
 			</span></h2>
 	</div>
 
