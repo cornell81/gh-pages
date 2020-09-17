@@ -66,7 +66,7 @@
 			// Iterate through the touch points that were activated
 			// for this element and process each event 'target'
 			for (var i = 0; i < ev.targetTouches.length; i++) {
-				document.getElementById('touchdata').innerHTML = ev.targetTouches[i].target;
+				document.getElementById('touchdata').innerHTML = ev.touches[0];
 			}
 		}, false);
 		//document.getElementById('rotatebutton').addEventListener('onclick', turnDeg(rotateDeg));
